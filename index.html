@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Museum — The Past, Reimagined</title>
+  <meta name="description" content="A futuristic digital museum experience bridging classical antiquities, cinematic lighting, glassmorphism, and future interaction. Ancient objects. Modern interface. Future interaction.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D8C086'><text y='18' font-size='18'>∞</text></svg>">
+
+  <!-- Google Fonts: Cormorant Garamond, Cinzel & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/variables.css">
+  <link rel="stylesheet" href="/src/styles/typewriter.css">
+  <link rel="stylesheet" href="/src/styles/cursor.css">
+  <link rel="stylesheet" href="/src/styles/navigation.css">
+  <link rel="stylesheet" href="/src/styles/hero.css">
+  <link rel="stylesheet" href="/src/styles/uiverse-components.css">
+  <link rel="stylesheet" href="/src/styles/pages.css">
+  <link rel="stylesheet" href="/src/styles/responsive.css">
+</head>
+<body>
+
+  <!-- Subtle noise grain texture overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- SECTION 10 & 11: GLOBAL TYPEWRITER LOADING SCREEN -->
+  <div id="loading-screen">
+    <div class="loader-ambient-ring"></div>
+    <div class="typewriter-wrapper">
+      <div class="typewriter">
+        <div class="slide"><i></i></div>
+        <div class="paper"></div>
+        <div class="keyboard"></div>
+      </div>
+      <div class="typewriter-reflection"></div>
+      <div class="loader-meta">
+        <div class="loader-text">ENTERING THE ARCHIVE</div>
+        <div class="loader-symbol">∞</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLOBAL NAVIGATION BAR -->
+  <header class="museum-header" id="museum-navbar">
+    <div class="museum-container">
+      <div class="nav-inner">
+        
+        <!-- Brand Wordmark -->
+        <a href="#/" class="nav-brand" data-cursor="button">
+          <span>MUSEUM</span>
+          <span class="brand-infinity">∞</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#/" class="nav-link active" data-cursor="text">Explore</a></li>
+            <li><a href="#/collections" class="nav-link" data-cursor="text">Collections</a></li>
+            <li><a href="#/timeline" class="nav-link" data-cursor="text">Timeline</a></li>
+            <li><a href="#/exhibitions" class="nav-link" data-cursor="text">Exhibitions</a></li>
+            <li><a href="#/visit" class="nav-link" data-cursor="text">Visit</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right Action Controls -->
+        <div class="nav-actions">
+          
+          <!-- Web Audio Spatial Drone Toggle -->
+          <button class="audio-toggle-btn" id="audio-toggle-btn" title="Toggle Museum Spatial Drone" aria-label="Toggle Sound" data-cursor="button">
+            <div class="audio-bars">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+
+          <!-- Search Trigger -->
+          <button class="search-btn search-trigger-btn" title="Search Archival Catalog" aria-label="Search Catalog" data-cursor="button">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <!-- Primary CTA Button -->
+          <a href="#/visit" class="nav-cta-btn" data-cursor="button">
+            <span>PLAN YOUR VISIT</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <!-- Mobile Hamburger Trigger -->
+          <button class="mobile-menu-trigger" id="mobile-menu-btn" aria-label="Open Navigation Menu">
+            <span></span>
+            <span></span>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE GLASS NAVIGATION DRAWER -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <ul class="mobile-nav-links">
+      <li><a href="#/" class="active">Explore</a></li>
+      <li><a href="#/collections">Collections</a></li>
+      <li><a href="#/timeline">Timeline</a></li>
+      <li><a href="#/exhibitions">Exhibitions</a></li>
+      <li><a href="#/visit">Visit</a></li>
+    </ul>
+    <a href="#/visit" class="btn-gold-3d" style="width: 100%; justify-content: center;">
+      <span>PLAN YOUR VISIT →</span>
+    </a>
+  </div>
+
+  <!-- SEARCH MODAL -->
+  <div class="search-modal-backdrop" id="search-modal">
+    <div class="search-modal-box">
+      <div class="search-input-wrap">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--champagne)" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search relics, artists, eras, materials (e.g. David, Gold, Marble)..." autocomplete="off">
+        <button id="search-close-btn" style="color: var(--text-dim); font-size: 1.2rem; padding: 0.5rem;" data-cursor="button">✕</button>
+      </div>
+      <div class="search-results-list" id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- MAIN DYNAMIC CONTENT CONTAINER -->
+  <main id="app-main"></main>
+
+  <!-- GLOBAL EDITORIAL FOOTER -->
+  <footer class="museum-footer">
+    <div class="museum-container">
+      <div class="footer-top-grid">
+        
+        <div>
+          <div class="footer-brand">
+            FUTURE MUSEUM <span style="color: var(--gold);">∞</span>
+          </div>
+          <div class="footer-tagline">THE PAST, REIMAGINED.</div>
+          <p class="footer-desc">
+            A state-of-the-art cultural institution dedicated to the preservation, multi-spectral digitization, and future interaction with humanity's greatest aesthetic achievements.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">DEPARTMENTS</div>
+          <ul class="footer-links">
+            <li><a href="#/collections/ancient-civilizations" class="footer-link">Ancient Civilizations</a></li>
+            <li><a href="#/collections/classical-antiquity" class="footer-link">Classical Antiquity</a></li>
+            <li><a href="#/collections/medieval-world" class="footer-link">Medieval World</a></li>
+            <li><a href="#/collections/age-of-invention" class="footer-link">Age of Invention</a></li>
+            <li><a href="#/collections/future-visions" class="footer-link">Beyond The Physical</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">EXPLORE</div>
+          <ul class="footer-links">
+            <li><a href="#/" class="footer-link">Overview</a></li>
+            <li><a href="#/collections" class="footer-link">All Collections</a></li>
+            <li><a href="#/timeline" class="footer-link">Grand Timeline</a></li>
+            <li><a href="#/exhibitions" class="footer-link">Current Exhibitions</a></li>
+            <li><a href="#/visit" class="footer-link">Plan Your Visit</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">LOCATION & HOURS</div>
+          <p class="footer-desc" style="margin-bottom: 1rem;">
+            Smt. Indira Gandhi College of Engineering Pavilion<br>
+            Navi Mumbai, Maharashtra 400701
+          </p>
+          <div style="font-size: 0.84rem; color: var(--champagne);">
+            Tuesday — Sunday<br>
+            10:00 AM — 9:30 PM
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Future Museum. All rights reserved. Smt. Indira Gandhi College of Engineering Archival Initiative.
+        </div>
+        <div style="display: flex; gap: 1.5rem;">
+          <span style="letter-spacing: 0.15em; text-transform: uppercase;">ARCHIVE CODE: FM-SIGCE-2026</span>
+          <span style="color: var(--gold);">◈</span>
+          <span>ANCIENT OBJECTS · MODERN INTERFACE · FUTURE INTERACTION</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Entry Point -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
